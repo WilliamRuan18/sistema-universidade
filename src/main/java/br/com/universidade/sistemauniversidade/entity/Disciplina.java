@@ -1,10 +1,9 @@
 package br.com.universidade.sistemauniversidade.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Entity
@@ -20,4 +19,20 @@ public class Disciplina {
 
     private String nome;
     private String descricao;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_titular_id")
+    private Professor professorTitular;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_substituto_id")
+    private Professor professorSubstituto;
+
+    @ManyToMany
+    @JoinTable(
+            name = "disciplina_aluno",
+            joinColumns = @JoinColumn(name = "disciplina_id"),
+            inverseJoinColumns = @JoinColumn(name = "aluno_id")
+    )
+    private List<Aluno> alunos;
 }
