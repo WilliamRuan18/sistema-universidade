@@ -23,4 +23,11 @@ public class Curso {
 
     @OneToMany(mappedBy = "curso")
     private List<Aluno> alunos;
+
+    @OneToOne(mappedBy = "curso")
+    private Coordenador coordenador;
+
+    @OneToMany(mappedBy = "curso")
+    private List<Disciplina> disciplinas;
+
 }

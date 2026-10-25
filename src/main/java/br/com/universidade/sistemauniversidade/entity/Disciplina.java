@@ -21,6 +21,10 @@ public class Disciplina {
     private String descricao;
 
     @ManyToOne
+    @JoinColumn(name = "curso_id")
+    private Curso curso;
+
+    @ManyToOne
     @JoinColumn(name = "professor_titular_id")
     private Professor professorTitular;
 
