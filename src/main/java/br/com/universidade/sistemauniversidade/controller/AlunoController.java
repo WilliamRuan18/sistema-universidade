@@ -4,9 +4,7 @@ package br.com.universidade.sistemauniversidade.controller;
 import br.com.universidade.sistemauniversidade.entity.Aluno;
 import br.com.universidade.sistemauniversidade.service.AlunoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,10 @@ public class AlunoController {
     @GetMapping
     public List<Aluno> listarAlunos() {
         return alunoService.listarTodos();
+    }
+
+    @PostMapping
+    public Aluno criarAluno(@RequestBody Aluno aluno) {
+        return alunoService.salvar(aluno);
     }
 }
