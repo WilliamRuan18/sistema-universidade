@@ -1,5 +1,6 @@
 package br.com.universidade.sistemauniversidade.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Curso {
     private String nome;
     private String descricao;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "curso")
     private List<Aluno> alunos;
 

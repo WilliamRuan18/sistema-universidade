@@ -3,6 +3,7 @@ package br.com.universidade.sistemauniversidade.controller;
 
 import br.com.universidade.sistemauniversidade.entity.Aluno;
 import br.com.universidade.sistemauniversidade.service.AlunoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,13 +22,12 @@ public class AlunoController {
     }
 
     @PostMapping
-    public Aluno criarAluno(@RequestBody Aluno aluno) {
+    public Aluno criarAluno(@Valid @RequestBody Aluno aluno) {
         return alunoService.salvar(aluno);
     }
 
     @PutMapping("/{id}")
-    public Aluno atualizarAluno(@PathVariable Long id, @RequestBody Aluno aluno) {
-        aluno.setId(id);
+    public Aluno atualizarAluno(@PathVariable Long id, @Valid @RequestBody Aluno aluno) {
         return alunoService.atualizarAluno(id,aluno);
     }
 
